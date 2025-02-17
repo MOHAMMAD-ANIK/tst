@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "puppeteer": "latest"
+    "puppeteer": "24.2.1"
   }
 }
