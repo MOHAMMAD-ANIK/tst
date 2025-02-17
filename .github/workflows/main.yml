@@ -1,31 +1,26 @@
-name: Run Index.js with Puppeteer
+name: Run Puppeteer
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  run-puppeteer:
+  puppeteer:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Dependencies for Puppeteer
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libatk1.0-0 libatk-bridge2.0-0 \
-          libcups2 libxcomposite1 libxdamage1 libxrandr2 \
-          libgbm1 libpangocairo-1.0-0 libpango-1.0-0 \
-          libgdk-pixbuf2.0-0 libgtk-3-0 libnss3 libx11-xcb1 \
-          libx11-6 libxcb1 libxext6 libxfixes3 \
-          libsndfile1  # libasound2 এর বিকল্প
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '20'
 
-      - name: Install npm Dependencies (Including Puppeteer)
+      - name: Install Dependencies (Including Puppeteer)
         run: npm install
 
-      - name: Run Index.js
+      - name: Run Script
         run: node index.js
