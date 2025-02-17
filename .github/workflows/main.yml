@@ -1,9 +1,9 @@
-name: Puppeteer CI
+name: Run Index.js with Puppeteer
 
 on: [push, pull_request]
 
 jobs:
-  puppeteer-job:
+  run-puppeteer:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -23,8 +23,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install npm Dependencies
+      - name: Install npm Dependencies (Including Puppeteer)
         run: npm install
 
-      - name: Run Puppeteer Script
+      - name: Run Index.js
         run: node index.js
